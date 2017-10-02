@@ -1,0 +1,41 @@
+server:
+  applicationConnectors:
+  - type: http
+    port: 8181
+  adminConnectors:
+  - type: http
+    port: 8191
+
+logging:
+  level: INFO
+  loggers:
+    com.pmonteiro: DEBUG
+
+mongo:
+  provider: FONGO
+  jta.platform: org.hibernate.service.jta.platform.internal.JBossStandAloneJtaPlatform
+  host: 127.0.0.1:27017
+  database: test
+  create.database: true
+
+swagger:
+  includeSwaggerResource: true
+  resourcePackage: com.pmonteiro.iot.resources
+
+kafka:
+  server: 127.0.0.1:9092
+  topic: iot-plants
+  group.id: 1
+  enable.auto.commit: false
+  auto.commit.interval.ms: 1000
+  auto.offset.reset: earliest
+
+sundial:
+  thread-pool-size: 10
+  shutdown-on-unload: true
+  wait-on-shutdown: false
+  start-delay-seconds: 0
+  start-scheduler-on-load: true
+  global-lock-on-load: false
+  annotated-jobs-package-name: com.pmonteiro.iot.tasks
+  tasks: [startjob, stopjob]

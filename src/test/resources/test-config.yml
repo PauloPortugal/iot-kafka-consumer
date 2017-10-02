@@ -1,0 +1,15 @@
+logging:
+  level: INFO
+  loggers:
+    com.pmonteiro: DEBUG
+
+mongo:
+  provider: FONGO
+  jta.platform: org.hibernate.service.jta.platform.internal.JBossStandAloneJtaPlatform
+  host: 127.0.0.1:27017
+  database: test
+  create.database: true
+
+swagger:
+  includeSwaggerResource: true
+  resourcePackage: com.pmonteiro.iot.resources
